@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import '../models/pet.dart';
+import '../repository/pet_repository.dart';
 
 class PetCubit extends Cubit<List<Pet>> {
   PetCubit() : super([]);
@@ -38,5 +39,22 @@ class PetCubit extends Cubit<List<Pet>> {
 
     emit(updatedPets);
   }
+
+  void clearAdoptionHistory() {
+    emit(state.map((pet) => pet.copyWith(isAdopted: false)).toList());
+  }
+
+  Future<void> fetchAndCachePets(PetRepository repository) async {
+    if (await repository.isCacheEmpty()) {
+      final pets = await repository.fetchPetsFromApi();
+      await repository.savePetsToCache(pets);
+      emit(pets);
+    } else {
+      final cachedPets = await repository.loadPetsFromCache();
+      emit(cachedPets);
+    }
+  }
+
+
 }
 

@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _fetchPets();
+    context.read<PetCubit>().fetchAndCachePets(widget.repository);
   }
 
   Future<void> _fetchPets() async {
