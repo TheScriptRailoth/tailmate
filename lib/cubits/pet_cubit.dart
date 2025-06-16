@@ -6,6 +6,12 @@ import '../repository/pet_repository.dart';
 class PetCubit extends Cubit<List<Pet>> {
   PetCubit() : super([]);
 
+  void searchPets(String query) {
+    final allPets = Hive.box<Pet>('pets').values.toList();
+    final filtered = allPets.where((pet) => pet.name.toLowerCase().contains(query.toLowerCase())).toList();
+    emit(filtered);
+  }
+
   void loadPets(List<Pet> pets) {
     emit(pets);
   }
