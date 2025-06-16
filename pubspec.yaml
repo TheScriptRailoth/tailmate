@@ -42,6 +42,7 @@ dependencies:
   flutter_bloc:
   slide_to_act:
   confetti:
+  flutter_zoom_drawer:
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tailmate/repository/pet_repository.dart';
-import 'package:tailmate/screens/navbar.dart';
+import 'package:tailmate/screens/main_navigation.dart';
 import 'home_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,25 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   automaticallyImplyLeading: true,
-        //   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        //   title: Hero(
-        //     tag: 'searchBarHero',
-        //     child: Material(
-        //       type: MaterialType.transparency,
-        //       child: TextField(
-        //         controller: _controller,
-        //         autofocus: true,
-        //         decoration: const InputDecoration(
-        //           hintText: 'Search pets by name...',
-        //           border: InputBorder.none,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: const Center(
         child: Text(
           '🐾 TailMate',

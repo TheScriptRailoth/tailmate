@@ -11,13 +11,16 @@ import '../widgets/category_clip.dart';
 
 class HomePage extends StatefulWidget {
   final PetRepository repository;
-  const HomePage({Key? key, required this.repository}) : super(key: key);
+  final VoidCallback toggleDrawer;
+
+  const HomePage({Key? key, required this.repository, required this.toggleDrawer}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   bool isLoading = true;
 
   @override
@@ -73,12 +76,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xffF7F7F7),
+      backgroundColor: Theme.of(context).colorScheme.outline,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.grid_view_rounded, color: Colors.black,)),
+        leading: IconButton(onPressed: widget.toggleDrawer, icon: Icon(Icons.grid_view_rounded, color: Color(0xff9188E5),)),
         title: Row(
           children: [
             Text("Welcome", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
@@ -167,106 +170,10 @@ class _HomePageState extends State<HomePage> {
 
                 ],
               );
-
-              // return ListView.builder(
-              //   itemCount: pets.length,
-              //   itemBuilder: (context, index) {
-              //     final pet = pets[index];
-              //     return ListTile(
-              //       onTap: () {
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (_) => DetailsPage(pet: pet)),
-              //         );
-              //       },
-              //       leading: Hero(
-              //         tag: pet.id,
-              //         child: CircleAvatar(backgroundImage: NetworkImage(pet.imageUrl)),
-              //       ),
-              //       title: Text(pet.name),
-              //       subtitle: Text('Age: ${pet.age}, ₹${pet.price}'),
-              //       trailing: Row(
-              //         mainAxisSize: MainAxisSize.min,
-              //         children: [
-              //           IconButton(
-              //             icon: Icon(
-              //               pet.isFavorite ? Icons.favorite : Icons.favorite_border,
-              //               color: pet.isFavorite ? Colors.red : null,
-              //             ),
-              //             onPressed: () => context.read<PetCubit>().toggleFavorite(pet.id),
-              //           ),
-              //           pet.isAdopted
-              //               ? const Text("Adopted", style: TextStyle(color: Colors.grey))
-              //               : ElevatedButton(
-              //             onPressed: () {
-              //               context.read<PetCubit>().adoptPet(pet.id);
-              //               ScaffoldMessenger.of(context).showSnackBar(
-              //                 SnackBar(content: Text("You’ve now adopted ${pet.name}")),
-              //               );
-              //             },
-              //             child: const Text('Adopt Me'),
-              //           ),
-              //         ],
-              //       ),
-              //     );
-              //   },
-              // );
-            },
+              },
           ),
         ),
       ),
-      //     : RefreshIndicator(
-      //   onRefresh: _refreshPetsFromApi,
-      //   child: BlocBuilder<PetCubit, List<Pet>>(
-      //     builder: (context, pets) {
-      //       if (pets.isEmpty) return const Center(child: Text('No pets found'));
-      //
-      //       return ListView.builder(
-      //
-      //         itemCount: pets.length,
-      //         itemBuilder: (context, index) {
-      //           final pet = pets[index];
-      //           return ListTile(
-      //             onTap: (){
-      //               Navigator.push(context, MaterialPageRoute(builder: (_)=> DetailsPage(pet: pet,),),);
-      //             },
-      //             leading: Hero(
-      //               tag: pet.id,
-      //               child: CircleAvatar(
-      //                 backgroundImage: NetworkImage(pet.imageUrl),
-      //               ),
-      //             ),
-      //             title: Text(pet.name),
-      //             subtitle: Text('Age: ${pet.age}, ₹${pet.price}'),
-      //             trailing: Row(
-      //               mainAxisSize: MainAxisSize.min,
-      //               children: [
-      //                 IconButton(
-      //                   icon: Icon(
-      //                     pet.isFavorite ? Icons.favorite : Icons.favorite_border,
-      //                     color: pet.isFavorite ? Colors.red : null,
-      //                   ),
-      //                   onPressed: () => context.read<PetCubit>().toggleFavorite(pet.id),
-      //                 ),
-      //                 pet.isAdopted
-      //                     ? const Text("Adopted", style: TextStyle(color: Colors.grey))
-      //                     : ElevatedButton(
-      //                   onPressed: () {
-      //                     context.read<PetCubit>().adoptPet(pet.id);
-      //                     ScaffoldMessenger.of(context).showSnackBar(
-      //                       SnackBar(content: Text("You’ve now adopted ${pet.name}")),
-      //                     );
-      //                   },
-      //                   child: const Text('Adopt Me'),
-      //                 ),
-      //               ],
-      //             ),
-      //           );
-      //         },
-      //       );
-      //     },
-      //   ),
-      // ),
     );
   }
 }

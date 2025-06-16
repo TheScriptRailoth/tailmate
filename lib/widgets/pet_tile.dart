@@ -6,6 +6,7 @@ import '../cubits/pet_cubit.dart';
 import '../models/pet.dart';
 import '../screens/details_page.dart';
 
+
 Widget buildPetTile(Pet pet, BuildContext context) {
   return GestureDetector(
     onTap: () {
@@ -18,9 +19,9 @@ Widget buildPetTile(Pet pet, BuildContext context) {
       margin: const EdgeInsets.only( right:16, top : 8, bottom:8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
-        
+
       ),
       child: Row(
         children: [
@@ -82,7 +83,7 @@ Widget buildPetTile(Pet pet, BuildContext context) {
           IconButton(
             icon: Icon(
               pet.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: pet.isFavorite ? Colors.purple : Colors.grey,
+              color: pet.isFavorite ? Color(0xff9188E5) : Colors.grey,
             ),
             onPressed: () => context.read<PetCubit>().toggleFavorite(pet.id),
           ),

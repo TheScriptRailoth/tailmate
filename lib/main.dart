@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:tailmate/models/pet.dart';
-import 'package:tailmate/screens/navbar.dart';
 import 'package:tailmate/screens/splash_screen.dart';
 import 'cubits/pet_cubit.dart';
+import 'cubits/theme_cubit.dart'; // NEW
 import 'repository/pet_repository.dart';
-import 'screens/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,20 +26,31 @@ class PetAdoptionApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PetCubit>(create: (_) => PetCubit()),
+        BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
       ],
-      child: MaterialApp(
-        title: 'Pet Adoption App',
-        theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.teal,
-        ),
-        darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          primarySwatch: Colors.teal,
-        ),
-        themeMode: ThemeMode.system,
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return MaterialApp(
+            title: 'Pet Adoption App',
+            themeMode: ThemeMode.system,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Color(0xFF9188E5),
+                brightness: Brightness.light,
+              ),
+              useMaterial3: true,
+            ),
+            darkTheme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Color(0xFF9188E5),
+                brightness: Brightness.dark,
+              ),
+              useMaterial3: true,
+            ),
+            debugShowCheckedModeBanner: false,
+            home: const SplashScreen(),
+          );
+        },
       ),
     );
   }
