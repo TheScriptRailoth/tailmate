@@ -401,12 +401,20 @@ class _SearchPageState extends State<SearchPage> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     onTap: () {
                       FocusScope.of(context).unfocus();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => DetailsPage(pet: pet),
-                        ),
-                      );
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailsPage(pet: pet),
+                          ),
+                        );
+                      });
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (_) => DetailsPage(pet: pet),
+                      //   ),
+                      // );
                     },
                     leading: Hero(
                       tag: pet.id,

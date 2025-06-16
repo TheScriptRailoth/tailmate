@@ -40,6 +40,8 @@ dependencies:
   hive_flutter:
   http:
   flutter_bloc:
+  slide_to_act:
+  confetti: 
 
 dev_dependencies:
   flutter_test:
