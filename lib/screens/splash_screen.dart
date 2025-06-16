@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  late TextEditingController _controller;
+  //late TextEditingController _controller;
   final PetRepository pet_repository = PetRepository(baseUrl: 'https://tailmate-backend.vercel.app/');
   @override
   void initState() {
@@ -28,24 +28,24 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          title: Hero(
-            tag: 'searchBarHero',
-            child: Material(
-              type: MaterialType.transparency,
-              child: TextField(
-                controller: _controller,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Search pets by name...',
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-        ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: true,
+        //   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        //   title: Hero(
+        //     tag: 'searchBarHero',
+        //     child: Material(
+        //       type: MaterialType.transparency,
+        //       child: TextField(
+        //         controller: _controller,
+        //         autofocus: true,
+        //         decoration: const InputDecoration(
+        //           hintText: 'Search pets by name...',
+        //           border: InputBorder.none,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       backgroundColor: Colors.white,
       body: const Center(
         child: Text(
