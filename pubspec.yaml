@@ -41,7 +41,7 @@ dependencies:
   http:
   flutter_bloc:
   slide_to_act:
-  confetti: 
+  confetti:
 
 dev_dependencies:
   flutter_test:
