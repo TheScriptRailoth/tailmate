@@ -162,21 +162,7 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
         children: [
           const Text("Pet Type", style: TextStyle(fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
-          // Wrap(
-          //   spacing: 8,
-          //   children: types.map((type) {
-          //     final isSelected = type == _type;
-          //     return ChoiceChip(
-          //       label: Text(type),
-          //       selected: isSelected,
-          //       onSelected: (_) {
-          //         setState(() => _type = type);
-          //         _notifyChange();
-          //       },
-          //       selectedColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-          //     );
-          //   }).toList(),
-          // ),
+
           DropdownButtonFormField<String>(
             value: _type,
             items: types.map((type) {

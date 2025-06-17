@@ -220,10 +220,11 @@ class _DetailsPageState extends State<DetailsPage>{
           const Text("About", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
           Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit...kjh dfihsdgfuygsdufygusfgusudyfgausddyfguasfguasgfugsufgusdgfuasgfugufguasgfudysgfusgfugasuyfgudys",
-            style: TextStyle(color:  Theme.of(context).textTheme.bodyLarge?.color),
-            maxLines: 4,
+            "Meet your perfect companion! This adorable pet is full of love and ready to become a cherished part of your family. With a gentle nature and a playful spirit, they’re sure to bring joy, comfort, and countless happy memories into your home. Whether you're looking for a loyal friend or a fun playmate, this little one is eager to shower you with affection and companionship.",
+            style: TextStyle(color:  Theme.of(context).textTheme.bodyLarge?.color, ),
+            maxLines: 7,
             overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
           const Spacer(),
 
