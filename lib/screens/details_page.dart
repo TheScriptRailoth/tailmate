@@ -243,7 +243,7 @@ class _DetailsPageState extends State<DetailsPage>{
           top: 16,
           left: 16,
           child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.background),
             onPressed: () => Navigator.pop(context),
           ),
         ),
@@ -253,7 +253,7 @@ class _DetailsPageState extends State<DetailsPage>{
           child: IconButton(
             icon: Icon(
               widget.pet.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: widget.pet.isFavorite ? Colors.red : Colors.white,
+              color: widget.pet.isFavorite ? Color(0xFF9188E5): Theme.of(context).colorScheme.background,
             ),
             onPressed: () {
               context.read<PetCubit>().toggleFavorite(widget.pet.id);
@@ -271,8 +271,8 @@ class _DetailsPageState extends State<DetailsPage>{
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
       ),
       child: Column(
@@ -308,9 +308,9 @@ class _DetailsPageState extends State<DetailsPage>{
           const SizedBox(height: 20),
           const Text("About", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit...kjh dfihsdgfuygsdufygusfgusudyfgausddyfguasfguasgfugsufgusdgfuasgfugufguasgfudysgfusgfugasuyfgudys",
-            style: TextStyle(color: Colors.black87),
+            style: TextStyle(color:  Theme.of(context).textTheme.bodyLarge?.color),
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
           ),
@@ -323,11 +323,11 @@ class _DetailsPageState extends State<DetailsPage>{
                 ? SlideAction(
               borderRadius: 12,
               elevation: 0,
-              innerColor: Colors.white,
+              innerColor: Theme.of(context).colorScheme.background,
               outerColor: Theme.of(context).colorScheme.primary,
               sliderButtonIcon: const Icon(Icons.pets, color: Colors.purple),
               text: "Slide to Adopt",
-              textStyle: const TextStyle(color: Colors.white, fontSize: 16),
+              textStyle: TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 16),
               onSubmit: () {
                 setState(() {
                   pet.isAdopted = true;
