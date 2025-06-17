@@ -129,8 +129,8 @@ class _HomePageState extends State<HomePage> {
               child: Material(
                 color: Colors.transparent,
                 child: Container(
-                  height: 44,
-                  width: 160,
+                  height: kToolbarHeight - 12,
+                  width: 65,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               padding: const EdgeInsets.only(left: 20, top: 20),
               children: [
-                Text('Pet Category',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                const Text('Pet Category',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 const SizedBox(height: 12),
                 SizedBox(
                   height: 40,
@@ -200,11 +200,11 @@ class _HomePageState extends State<HomePage> {
                         }),
                       ),
                       CategoryChip(
-                        label: "Turtle",
+                        label: "Turtles",
                         emoji: "🐢",
-                        isSelected: selectedCategory == "Rabbit",
+                        isSelected: selectedCategory == "Turtle",
                         onTap: () => setState(() {
-                          selectedCategory = selectedCategory == "Rabbit" ? "All" : "Rabbit";
+                          selectedCategory = selectedCategory == "Turtle" ? "All" : "Turtle";
                         }),
                       ),
                     ],
@@ -212,6 +212,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 const SizedBox(height: 16),
+                Text('Explore',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 GridView.builder(
                   padding: const EdgeInsets.only(right: 16, top: 16, bottom: 16),
                   shrinkWrap: true,

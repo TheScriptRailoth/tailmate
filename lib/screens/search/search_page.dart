@@ -68,44 +68,53 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         titleSpacing: 0,
-        title: Hero(
-          tag: 'searchHero',
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              height: 50,
-              margin: const EdgeInsets.symmetric(vertical: 4),
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark
-                    ? Colors.grey[800]
-                    : Colors.grey[200],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.search, color: Colors.grey),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      autofocus: true,
-                      decoration: const InputDecoration.collapsed(
-                          hintText: "Search pets..."),
-                      onChanged: _onSearchChanged,
+
+          title: Padding(
+            padding: const EdgeInsets.only(right: 4),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Hero(
+                    tag: 'searchHero',
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        height: 50,
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        decoration: BoxDecoration(
+                          color: theme.brightness == Brightness.dark
+                              ? Colors.grey[800]
+                              : Colors.grey[200],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.search, color: Colors.grey),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: TextField(
+                                autofocus: true,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: "Search pets..."),
+                                onChanged: _onSearchChanged,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(
-                      showFilters ? CupertinoIcons.slider_horizontal_3 : CupertinoIcons.slider_horizontal_3,
-                      color: Colors.grey[600],
-                    ),
-                    onPressed: () => setState(() => showFilters = !showFilters),
-                  )
-                ],
-              ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    CupertinoIcons.slider_horizontal_3,
+                    color: Colors.grey[600],
+                  ),
+                  onPressed: () => setState(() => showFilters = !showFilters),
+                )
+              ],
             ),
-          ),
-        ),
+          )
       ),
       body: SafeArea(
         child: Column(

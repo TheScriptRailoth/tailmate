@@ -184,13 +184,6 @@ class _DetailsPageState extends State<DetailsPage>{
         right: 20,
         top: 20,
       ),
-
-      //width: double.infinity,
-      //padding: const EdgeInsets.all(20),
-      // decoration: BoxDecoration(
-      //   color: Theme.of(context).colorScheme.background,
-      //   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-      // ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
