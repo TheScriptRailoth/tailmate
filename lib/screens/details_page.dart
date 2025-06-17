@@ -1,109 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import '../models/pet.dart';
-// import '../cubits/pet_cubit.dart';
-//
-// class DetailsPage extends StatelessWidget {
-//   final Pet pet;
-//
-//   const DetailsPage({super.key, required this.pet});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final isAdopted = pet.isAdopted;
-//
-//     return Scaffold(
-//       resizeToAvoidBottomInset: true,
-//       appBar: AppBar(
-//         title: Text(pet.name),
-//         actions: [
-//           IconButton(
-//             icon: Icon(
-//               pet.isFavorite ? Icons.favorite : Icons.favorite_border,
-//               color: pet.isFavorite ? Colors.red : null,
-//             ),
-//             onPressed: () => context.read<PetCubit>().toggleFavorite(pet.id),
-//           ),
-//         ],
-//       ),
-//       body: SafeArea(
-//         child: Padding(
-//           padding: const EdgeInsets.all(16),
-//           child: Column(
-//             children: [
-//               Hero(
-//                 tag: pet.id,
-//                 child: ClipRRect(
-//                   borderRadius: BorderRadius.circular(16),
-//                   child: InteractiveViewer(
-//                     panEnabled: true,
-//                     minScale: 1,
-//                     maxScale: 4,
-//                     child: Image.network(
-//                       pet.imageUrl,
-//                       width: double.infinity,
-//                       height: 250,
-//                       fit: BoxFit.cover,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               const SizedBox(height: 20),
-//               Text(
-//                 pet.name,
-//                 style: Theme.of(context).textTheme.headlineMedium,
-//               ),
-//               Text("Age: ${pet.age} years • ₹${pet.price}",
-//                   style: Theme.of(context).textTheme.titleMedium),
-//               const SizedBox(height: 10),
-//               const Divider(),
-//               const SizedBox(height: 10),
-//               Text(
-//                 "This lovely pet is looking for a new home. If you think you're the right person, adopt them now and give them a loving family!",
-//                 style: Theme.of(context).textTheme.bodyLarge,
-//               ),
-//               const Spacer(),
-//               if (isAdopted)
-//                 const Text(
-//                   'Already Adopted',
-//                   style: TextStyle(color: Colors.grey, fontSize: 18),
-//                 )
-//               else
-//                 ElevatedButton.icon(
-//                   onPressed: () {
-//                     context.read<PetCubit>().adoptPet(pet.id);
-//                     showDialog(
-//                       context: context,
-//                       builder: (_) => AlertDialog(
-//                         title: const Text('🎉 Adoption Success!'),
-//                         content: Text('You’ve now adopted ${pet.name}.'),
-//                         actions: [
-//                           TextButton(
-//                             onPressed: () => Navigator.pop(context),
-//                             child: const Text('OK'),
-//                           ),
-//                         ],
-//                       ),
-//                     );
-//                   },
-//                   icon: const Icon(Icons.pets),
-//                   label: const Text('Adopt Me'),
-//                   style: ElevatedButton.styleFrom(
-//                     minimumSize: const Size.fromHeight(50),
-//                     backgroundColor: Colors.teal,
-//                   ),
-//                 ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 import 'dart:math';
-
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -231,11 +126,27 @@ class _DetailsPageState extends State<DetailsPage>{
               bottomLeft: Radius.circular(40),
               bottomRight: Radius.circular(40),
             ),
-            child: Image.network(
+            child: pet.imageBytes != null
+                ? Image.memory(
+              pet.imageBytes!,
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            )
+                : Image.network(
               pet.imageUrl,
               height: MediaQuery.of(context).size.height * 0.4,
               width: double.infinity,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: double.infinity,
+                  color: Colors.grey[300],
+                  alignment: Alignment.center,
+                  child: Icon(Icons.pets, color: Colors.grey[600]),
+                );
+              },
             ),
           ),
         ),

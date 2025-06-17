@@ -29,7 +29,14 @@ Widget buildPetTile(Pet pet, BuildContext context) {
             tag: pet.id,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
+              child: pet.imageBytes != null
+                  ? Image.memory(
+                pet.imageBytes!,
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              )
+                  : Image.network(
                 pet.imageUrl,
                 width: 80,
                 height: 80,
@@ -40,11 +47,10 @@ Widget buildPetTile(Pet pet, BuildContext context) {
                     height: 80,
                     color: Colors.grey[300],
                     alignment: Alignment.center,
-                    child: Icon(Icons.pets, color: Colors.grey[600]), // or any fallback
+                    child: Icon(Icons.pets, color: Colors.grey[600]),
                   );
                 },
-              )
-
+              ),
             ),
           ),
           const SizedBox(width: 12),

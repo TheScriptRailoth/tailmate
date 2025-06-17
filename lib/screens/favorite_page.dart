@@ -34,7 +34,11 @@ class FavoritesPage extends StatelessWidget {
                   leading: Hero(
                     tag: pet.id,
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(pet.imageUrl),
+                      radius: 28,
+                      backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                      backgroundImage: pet.imageBytes != null
+                          ? MemoryImage(pet.imageBytes!)
+                          : NetworkImage(pet.imageUrl) as ImageProvider,
                     ),
                   ),
                   title: Text(pet.name),

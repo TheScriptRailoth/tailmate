@@ -25,13 +25,14 @@ class PetAdapter extends TypeAdapter<Pet> {
       isAdopted: fields[5] as bool,
       isFavorite: fields[6] as bool,
       category: fields[7] as String,
+      imageBytes: fields[8] as Uint8List?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Pet obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class PetAdapter extends TypeAdapter<Pet> {
       ..writeByte(6)
       ..write(obj.isFavorite)
       ..writeByte(7)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(8)
+      ..write(obj.imageBytes);
   }
 
   @override

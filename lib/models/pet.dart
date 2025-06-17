@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 part 'pet.g.dart';
 
@@ -27,6 +29,9 @@ class Pet extends HiveObject {
   @HiveField(7)
   String category;
 
+  @HiveField(8)
+  Uint8List? imageBytes;
+
   Pet({
     required this.id,
     required this.name,
@@ -36,6 +41,7 @@ class Pet extends HiveObject {
     this.isAdopted = false,
     this.isFavorite = false,
     this.category = '',
+    this.imageBytes,
   });
 
   factory Pet.fromJson(Map<String, dynamic> json) => Pet(
@@ -68,6 +74,7 @@ class Pet extends HiveObject {
     int? price,
     bool? isAdopted,
     bool? isFavorite,
+    Uint8List? imageBytes,
   }) {
     return Pet(
       id: id ?? this.id,
@@ -77,6 +84,7 @@ class Pet extends HiveObject {
       price: price ?? this.price,
       isAdopted: isAdopted ?? this.isAdopted,
       isFavorite: isFavorite ?? this.isFavorite,
+      imageBytes: imageBytes ?? this.imageBytes,
     );
   }
 }
