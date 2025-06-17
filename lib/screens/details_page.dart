@@ -36,7 +36,8 @@ class _DetailsPageState extends State<DetailsPage>{
     final pet = widget.pet;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Theme.of(context).colorScheme.background,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Stack(
           children: [
@@ -46,7 +47,6 @@ class _DetailsPageState extends State<DetailsPage>{
                 Expanded(child: _buildBottomDetails(context)),
               ],
             ),
-
             Align(
               alignment: Alignment.topLeft,
               child: ConfettiWidget(
@@ -89,13 +89,11 @@ class _DetailsPageState extends State<DetailsPage>{
                 shouldLoop: false,
               )
             ),
-
           ],
         ),
       ),
     );
   }
-
 
   Widget _infoChip(String label, String value) {
     return Chip(
@@ -179,13 +177,20 @@ class _DetailsPageState extends State<DetailsPage>{
   }
 
   Widget _buildBottomDetails(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+        left: 20,
+        right: 20,
+        top: 20,
       ),
+
+      //width: double.infinity,
+      //padding: const EdgeInsets.all(20),
+      // decoration: BoxDecoration(
+      //   color: Theme.of(context).colorScheme.background,
+      //   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      // ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -226,62 +231,58 @@ class _DetailsPageState extends State<DetailsPage>{
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
-          const Spacer(),
+
+          const SizedBox(height: 35),
+          //const Spacer(),
 
           // Slide to Adopt
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-            child: !pet.isAdopted
-                ? SlideAction(
-              borderRadius: 12,
-              elevation: 0,
-              innerColor: Theme.of(context).colorScheme.background,
-              outerColor: Theme.of(context).colorScheme.primary,
-              sliderButtonIcon: const Icon(Icons.pets, color: Colors.purple),
-              text: "Slide to Adopt",
-              textStyle: TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 16),
-              onSubmit: () {
-                setState(() {
-                  pet.isAdopted = true;
-                });
-                context.read<PetCubit>().adoptPet(pet.id);
-                confettiController.play();
+          !pet.isAdopted
+              ? SlideAction(
+            borderRadius: 12,
+            elevation: 0,
+            innerColor: Theme.of(context).colorScheme.background,
+            outerColor: Theme.of(context).colorScheme.primary,
+            sliderButtonIcon: const Icon(Icons.pets, color: Colors.purple),
+            text: "Slide to Adopt",
+            textStyle: TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 16),
+            onSubmit: () {
+              setState(() {
+                pet.isAdopted = true;
+              });
+              context.read<PetCubit>().adoptPet(pet.id);
+              confettiController.play();
 
-                showDialog(
-                  context: context,
-                  builder: (ctx) => AlertDialog(
-                    title: const Text("🎉 You’ve Found a Forever Friend!"),
-                    content: Text("You’ve adopted ${pet.name}. Thank you for giving them loving home! 🐶🐾"),
-                    actions: [
-                      ElevatedButton(onPressed: (){
-                        Navigator.pop(ctx);
-                      }, child: const Text("Yay!"))
-                    ],
-                  ),
-                );
-              },
-            )
-                : Container(
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.check_circle, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text("Already Adopted", style: TextStyle(color: Colors.green)),
-                ],
-              ),
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: const Text("🎉 You’ve Found a Forever Friend!"),
+                  content: Text("You’ve adopted ${pet.name}. Thank you for giving them loving home! 🐶🐾"),
+                  actions: [
+                    ElevatedButton(onPressed: (){
+                      Navigator.pop(ctx);
+                    }, child: const Text("Yay!"))
+                  ],
+                ),
+              );
+            },
+          )
+              : Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: Colors.green.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle, color: Colors.green),
+                SizedBox(width: 8),
+                Text("Already Adopted", style: TextStyle(color: Colors.green)),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-
-
-
 }

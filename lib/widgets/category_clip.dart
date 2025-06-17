@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class CategoryChip extends StatelessWidget {
   final String label;
-  final String imageUrl;
+  final String emoji;
   final bool isSelected;
   final VoidCallback onTap;
 
   const CategoryChip({
     super.key,
     required this.label,
-    required this.imageUrl,
+    required this.emoji,
     this.isSelected = false,
     required this.onTap,
   });
@@ -33,7 +33,7 @@ class CategoryChip extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Image.network(imageUrl, width: 20, height: 20),
+            Text(emoji),
             const SizedBox(width: 8),
             Text(
               label,

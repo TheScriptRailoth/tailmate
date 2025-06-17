@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:tailmate/screens/details_page.dart';
 import 'package:tailmate/screens/search/search_route.dart';
 import 'package:tailmate/widgets/pet_tile.dart';
 import '../cubits/pet_cubit.dart';
@@ -30,26 +29,6 @@ class _HomePageState extends State<HomePage> {
     _fetchPets();
     context.read<PetCubit>().fetchAndCachePets(widget.repository);
   }
-  //
-  // Future<void> _fetchPets() async {
-  //   final petCubit = context.read<PetCubit>();
-  //   final box = Hive.box<Pet>('pets');
-  //
-  //   try {
-  //     if(box.isNotEmpty){
-  //       petCubit.loadPets(box.values.toList());
-  //     }else{
-  //       final pets = await widget.repository.fetchPetsFromApi();
-  //       petCubit.loadPets(pets);
-  //     }
-  //
-  //   } catch (e) {
-  //     debugPrint('Error fetching pets: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to load pets')));
-  //   } finally {
-  //     setState(() => isLoading = false);
-  //   }
-  // }
 
   Future<void> _fetchPets() async {
     final petCubit = context.read<PetCubit>();
@@ -123,63 +102,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
-  // Future<void> _refreshPetsFromApi() async {
-  //   final petCubit = context.read<PetCubit>();
-  //   final box = Hive.box<Pet>('pets');
-  //
-  //   try {
-  //     final pets = await widget.repository.fetchPetsFromApi(forceRefresh: true);
-  //
-  //     await box.clear();
-  //     for (final pet in pets) {
-  //       box.put(pet.id, pet);
-  //     }
-  //
-  //     petCubit.loadPets(pets);
-  //   } catch (e) {
-  //     debugPrint('Error refreshing pets: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(content: Text('Failed to refresh pets')),
-  //     );
-  //   }
-  // }
-
-  // Future<void> _refreshPetsFromApi() async {
-  //   final petCubit = context.read<PetCubit>();
-  //   final box = Hive.box<Pet>('pets');
-  //
-  //   try {
-  //     final pets = await widget.repository.fetchPetsFromApi(forceRefresh: true);
-  //
-  //     await box.clear();
-  //
-  //     for (final pet in pets) {
-  //       try {
-  //         final response = await http.get(Uri.parse(pet.imageUrl));
-  //         if (response.statusCode == 200) {
-  //           pet.imageBytes = response.bodyBytes;
-  //         } else {
-  //           print('Failed to load image for ${pet.name}');
-  //         }
-  //       } catch (e) {
-  //         print('Error loading image for ${pet.name}: $e');
-  //       }
-  //
-  //       await box.put(pet.id, pet);
-  //     }
-  //
-  //     petCubit.loadPets(pets);
-  //   } catch (e) {
-  //     debugPrint('Error refreshing pets: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(content: Text('Failed to refresh pets')),
-  //     );
-  //   }
-  // }
-
   String selectedCategory = 'All';
-
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +129,8 @@ class _HomePageState extends State<HomePage> {
               child: Material(
                 color: Colors.transparent,
                 child: Container(
-                  height: kToolbarHeight - 12,
+                  height: 44,
+                  width: 160,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
@@ -245,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CategoryChip(
                         label: "Dogs",
-                        imageUrl: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+                        emoji: "🐶",
                         isSelected: selectedCategory == "Dog",
                         onTap: () => setState(() {
                           selectedCategory = selectedCategory == "Dog" ? "All" : "Dog";
@@ -253,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CategoryChip(
                         label: "Cats",
-                        imageUrl: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+                        emoji: "🐱",
                         isSelected: selectedCategory == "Cat",
                         onTap: () => setState((){
                           selectedCategory = selectedCategory == "Cat" ? "All" : "Cat";
@@ -261,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CategoryChip(
                         label: "Birds",
-                        imageUrl: "https://img.icons8.com/fluency/96/bird.png",
+                        emoji: "🐦",
                         isSelected: selectedCategory == "Bird",
                         onTap: () => setState(() {
                           selectedCategory = selectedCategory == "Bird" ? "All" : "Bird";
@@ -269,7 +193,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CategoryChip(
                         label: "Rabbits",
-                        imageUrl: "https://cdn-icons-png.flaticon.com/512/616/616554.png",
+                        emoji: "🐰",
+                        isSelected: selectedCategory == "Rabbit",
+                        onTap: () => setState(() {
+                          selectedCategory = selectedCategory == "Rabbit" ? "All" : "Rabbit";
+                        }),
+                      ),
+                      CategoryChip(
+                        label: "Turtle",
+                        emoji: "🐢",
                         isSelected: selectedCategory == "Rabbit",
                         onTap: () => setState(() {
                           selectedCategory = selectedCategory == "Rabbit" ? "All" : "Rabbit";
