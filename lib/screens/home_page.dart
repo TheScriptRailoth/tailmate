@@ -30,26 +30,6 @@ class _HomePageState extends State<HomePage> {
     _fetchPets();
     context.read<PetCubit>().fetchAndCachePets(widget.repository);
   }
-  //
-  // Future<void> _fetchPets() async {
-  //   final petCubit = context.read<PetCubit>();
-  //   final box = Hive.box<Pet>('pets');
-  //
-  //   try {
-  //     if(box.isNotEmpty){
-  //       petCubit.loadPets(box.values.toList());
-  //     }else{
-  //       final pets = await widget.repository.fetchPetsFromApi();
-  //       petCubit.loadPets(pets);
-  //     }
-  //
-  //   } catch (e) {
-  //     debugPrint('Error fetching pets: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to load pets')));
-  //   } finally {
-  //     setState(() => isLoading = false);
-  //   }
-  // }
 
   Future<void> _fetchPets() async {
     final petCubit = context.read<PetCubit>();
@@ -71,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             debugPrint('Image download failed for ${pet.name}: $e');
           }
 
-          await box.put(pet.id, pet); // Save pet with imageBytes
+          await box.put(pet.id, pet);
         }
 
         petCubit.loadPets(pets);
@@ -85,27 +65,6 @@ class _HomePageState extends State<HomePage> {
       setState(() => isLoading = false);
     }
   }
-
-  // Future<void> _refreshPetsFromApi() async {
-  //   final petCubit = context.read<PetCubit>();
-  //   final box = Hive.box<Pet>('pets');
-  //
-  //   try {
-  //     final pets = await widget.repository.fetchPetsFromApi(forceRefresh: true);
-  //
-  //     await box.clear();
-  //     for (final pet in pets) {
-  //       box.put(pet.id, pet);
-  //     }
-  //
-  //     petCubit.loadPets(pets);
-  //   } catch (e) {
-  //     debugPrint('Error refreshing pets: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(content: Text('Failed to refresh pets')),
-  //     );
-  //   }
-  // }
 
   Future<void> _refreshPetsFromApi() async {
     final petCubit = context.read<PetCubit>();
@@ -128,7 +87,7 @@ class _HomePageState extends State<HomePage> {
           print('Error loading image for ${pet.name}: $e');
         }
 
-        await box.put(pet.id, pet); // Now includes imageBytes
+        await box.put(pet.id, pet);
       }
 
       petCubit.loadPets(pets);
@@ -242,13 +201,18 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 const SizedBox(height: 16),
-                ListView.builder(
+                GridView.builder(
+                  padding: const EdgeInsets.only(right: 16, top: 16, bottom: 16),
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: 0.72,
+                  ),
                   itemCount: filteredPets.length,
-                  itemBuilder: (context, index) {
-                    return buildPetTile(filteredPets[index], context);
-                  },
+                  itemBuilder: (context, index) => buildPetTile(filteredPets[index], context),
                 )
               ],
             );
