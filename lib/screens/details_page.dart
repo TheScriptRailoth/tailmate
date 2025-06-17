@@ -124,27 +124,33 @@ class _DetailsPageState extends State<DetailsPage>{
               bottomLeft: Radius.circular(40),
               bottomRight: Radius.circular(40),
             ),
-            child: pet.imageBytes != null
-                ? Image.memory(
-              pet.imageBytes!,
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            )
-                : Image.network(
-              pet.imageUrl,
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  width: double.infinity,
-                  color: Colors.grey[300],
-                  alignment: Alignment.center,
-                  child: Icon(Icons.pets, color: Colors.grey[600]),
-                );
-              },
+            child: InteractiveViewer(
+              panEnabled: true,
+              scaleEnabled: true,
+              minScale: 1.0,
+              maxScale: 4.0,
+              child: pet.imageBytes != null
+                  ? Image.memory(
+                pet.imageBytes!,
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              )
+                  : Image.network(
+                pet.imageUrl,
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: double.infinity,
+                    color: Colors.grey[300],
+                    alignment: Alignment.center,
+                    child: Icon(Icons.pets, color: Colors.grey[600]),
+                  );
+                },
+              ),
             ),
           ),
         ),
