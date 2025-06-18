@@ -1,16 +1,105 @@
-# tailmate
+# 🐾 Tailmate – Pet Adoption App (Flutter + Web)
 
-A new Flutter project.
+**Tailmate** is a cross-platform Flutter application that helps users discover and adopt pets. It offers a clean, responsive UI for both mobile and web platforms, with features like pet listing, pet details, favorites, and image handling.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🐶 View a list of pets with images, age, and price.
+- ❤️ Mark pets as favorite.
+- 📄 View detailed information about each pet.
+- 🌐 Responsive UI for both **mobile and web**.
+- ⚙️ Hosted API on Vercel with mock data (JSON-based).
+- 🧩 Hero animations and custom card clipping for visual polish.
+- 🔐 CORS-enabled API integration for Flutter Web.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🌐 Live Web Demo
+
+👉 **[Try the Web App](https://tailmate-7kt3nvlqj-ashutosh-mishras-projects-f1cb5325.vercel.app/)** (Hosted on Vercel)
+
+---
+
+## 📦 APK & Code
+
+- 🔗 **[GitHub Repository](https://github.com/yourusername/tailmate)**
+- 📱 **[Download APK](https://github.com/yourusername/tailmate/releases/latest)**
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Flutter (Dart)
+- **Backend:** Node.js (Vercel Serverless Functions)
+- **State Management:** `flutter_bloc`
+- **Hosting:** Vercel (API & Web)
+- **Storage:** JSON file-based mock data
+
+---
+
+## 🗂️ Folder Structure
+
+```bash
+    
+tailmate/
+│
+├── lib/
+│ ├── cubits/
+│ ├── models/
+│ ├── screens/
+│ └── widgets/
+├── build/web/ # Web output folder (for hosting)
+├── api/ # Vercel serverless backend
+├── data/pets.json # Mock pet data
+├── pubspec.yaml
+└── README.md
+    
+```
+---
+
+## 🧪 Run Locally
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/tailmate.git
+cd tailmate
+
+# Get dependencies
+flutter pub get
+
+# Run on Android
+flutter run
+
+# Run on Web
+flutter run -d chrome
+
+# Build for Web
+flutter build web
+
+```
+----
+
+## ☁️ Deployment Notes
+
+- Only the build/web folder is deployed to Vercel due to the 100MB limit.
+- Backend API is hosted via Vercel serverless functions inside /api.
+- A vercel.json is used to route API requests properly.
+
+---
+
+## 🙏 Acknowledgements
+Thanks to Posha for the opportunity and for providing the assessment prompt.
+Built with ❤️ by Ashutosh Mishra.
+
+---
+
+## 📧 Contact
+
+- 📧 Email: am3718440@gmail.com
+
+- 🔗 LinkedIn: @thescriptrailoth
+
+- 📱 Phone: +91-8423979654
