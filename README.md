@@ -4,15 +4,18 @@
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- 🐶 View a list of pets with images, age, and price.
-- ❤️ Mark pets as favorite.
-- 📄 View detailed information about each pet.
-- 🌐 Responsive UI for both **mobile and web**.
-- ⚙️ Hosted API on Vercel with mock data (JSON-based).
-- 🧩 Hero animations and custom card clipping for visual polish.
-- 🔐 CORS-enabled API integration for Flutter Web.
+- 🐾 **View a list of pets** with images, age, and price.
+- ❤️ **Mark pets as favorite** for easy tracking.
+- 📄 **View detailed information** about each pet with a clean UI.
+- 🌐 **Responsive design** optimized for both mobile and web platforms.
+- ⚙️ **Hosted API on Vercel** with mock JSON data for quick access.
+- 🧩 **Smooth Hero animations** and custom card clipping for a polished feel.
+- 🔐 **CORS-enabled API integration** to support Flutter Web.
+- 💾 **Efficient caching** using Hive: pet data and images are stored locally to reduce API calls.
+- 🔄 **Pull-to-refresh** feature to manually update data from the API.
+
 
 ---
 
@@ -62,6 +65,11 @@
 | Light Mode | Dark Mode |
 |------------|-----------|
 | ![Details Light](./assets/screenshots/details_light.jpg) | ![Details Dark](./assets/screenshots/details_dark.jpg) |
+
+### 🎉 Adoption Success
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![Details Light](./assets/screenshots/adoption_success_light.jpg) | ![Details Dark](./assets/screenshots/adoption_success_dark.jpg) |
 
 
 ---
