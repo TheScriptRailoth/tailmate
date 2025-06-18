@@ -19,14 +19,14 @@
 
 ## 🌐 Live Web Demo
 
-👉 **[Try the Web App](https://tailmate-7kt3nvlqj-ashutosh-mishras-projects-f1cb5325.vercel.app/)** (Hosted on Vercel)
+👉 **[Try the Web App](https://tailmate-web-azure.vercel.app/)** (Hosted on Vercel)
 
 ---
 
 ## 📦 APK & Code
 
-- 🔗 **[GitHub Repository](https://github.com/yourusername/tailmate)**
-- 📱 **[Download APK](https://github.com/yourusername/tailmate/releases/latest)**
+- 🔗 **[GitHub Repository](https://github.com/TheScriptRailoth/tailmate)**
+- 📱 **[Download APK](https://drive.google.com/file/d/1dbcDEWxoMB8SykIlPc1jo05hqMjRcjGJ/view?usp=sharing)**
 
 ---
 
