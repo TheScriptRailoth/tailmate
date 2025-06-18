@@ -26,7 +26,7 @@ class PetAdoptionApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PetRepository repository = PetRepository(baseUrl: 'https://tailmate-backend.vercel.app/');
+    final PetRepository repository = PetRepository(baseUrl: 'https://tailmate-backend.vercel.app');
 
     return MultiBlocProvider(
       providers: [
