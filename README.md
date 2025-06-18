@@ -26,42 +26,42 @@
 ### 🏠 Home Page Category
 | Light Mode                                                    | Dark Mode                                                   |
 |---------------------------------------------------------------|-------------------------------------------------------------|
-| ![Home Category Light](assets/screenshots/category_light.png) | ![Home Category Dark](assets/screenshots/category_dark.png) |
+| ![Home Category Light](./assets/screenshots/category_light.png) | ![Home Category Dark](./assets/screenshots/category_dark.png) |
 
 ### 🔍 Search Page
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![Search Light](assets/screenshots/search_light.png) | ![Search Dark](assets/screenshots/search_dark.png) |
+| ![Search Light](./assets/screenshots/search_light.png) | ![Search Dark](./assets/screenshots/search_dark.png) |
 
 ### 📋 Search Results Filter
 | Light Mode                                                  | Dark Mode                                                 |
 |-------------------------------------------------------------|-----------------------------------------------------------|
-| ![Search Result Light](assets/screenshots/filter_light.png) | ![Search Result Dark](assets/screenshots/filter_dark.png) |
+| ![Search Result Light](./assets/screenshots/filter_light.png) | ![Search Result Dark](./assets/screenshots/filter_dark.png) |
 
 ### 📋 Search Results
 | Light Mode                                                                | Dark Mode |
 |---------------------------------------------------------------------------|-----------|
-| ![Search Result Filter Light](assets/screenshots/search_result_light.png) | ![Search Result Dark](assets/screenshots/search_result_dark.png) |
+| ![Search Result Filter Light](./assets/screenshots/search_result_light.png) | ![Search Result Dark](./assets/screenshots/search_result_dark.png) |
 
 ### 📂 Drawer
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![Drawer Light](assets/screenshots/drawer_light.png) | ![Drawer Dark](assets/screenshots/drawer_dark.png) |
+| ![Drawer Light](./assets/screenshots/drawer_light.png) | ![Drawer Dark](./assets/screenshots/drawer_dark.png) |
 
 ### ❤️ Favorites Page
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![Favorites Light](assets/screenshots/favourite_light.png) | ![Favorites Dark](assets/screenshots/favourite_dark.png) |
+| ![Favorites Light](./assets/screenshots/favourite_light.png) | ![Favorites Dark](./assets/screenshots/favourite_dark.png) |
 
 ### 🕓 Filter History
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![Filter History Light](assets/screenshots/history_light.png) | ![Filter History Dark](assets/screenshots/history_dark.png) |
+| ![Filter History Light](./assets/screenshots/history_light.png) | ![Filter History Dark](./assets/screenshots/history_dark.png) |
 
 ### 📄 Details Page
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![Details Light](assets/screenshots/details_light.png) | ![Details Dark](assets/screenshots/details_dark.png) |
+| ![Details Light](./assets/screenshots/details_light.png) | ![Details Dark](./assets/screenshots/details_dark.png) |
 
 
 ---
